@@ -2,6 +2,8 @@
 
 import { connectDB } from "@/app/api/db/connectDB";
 import { error } from "console";
+import cloudinary from "./cloudinary";
+import Product from "@/app/api/models/product.model";
 
 export async function addAction(formData: FormData) {
     try {
@@ -20,7 +22,42 @@ export async function addAction(formData: FormData) {
         }
 
         await connectDB();
+
+        //Image processes
+        // Image processes
+    const arrayBuffer = await image.arrayBuffer();
+    const buffer = new Uint8Array(arrayBuffer);
+    const imageResponse: any = await new Promise((resolve, reject) => {
+      cloudinary.uploader
+        .upload_stream(
+          {
+            resource_type: "auto",
+            folder: "watch-web",
+          },
+          async (error, result) => {
+            if (error) {
+              return reject(error.message);
+            }
+            return resolve(result);
+          }
+        )
+        .end(buffer);
+    });
+    console.log("Image response: ", imageResponse);
+
+    //Store in DB
+    await Product.create({
+        image: imageResponse.secure_url,
+        name,
+        price,
+        link,
+        description,
+    });
+
+    return {
+        success: "Product added successfully",
+    };
     } catch (error) {
-        
+        error: "Something went wrong!";
     }
 }

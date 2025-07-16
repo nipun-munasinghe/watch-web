@@ -1,13 +1,27 @@
+import { addAction } from '@/utils/addAction'
+import { useRouter } from 'next/router';
 import React from 'react'
+import toast from 'react-hot-toast';
 
 const AddForm = () => {
-    //Server Action
-    async function create() {
-        "use server";
-        console.log("Form submitted");
+    const router = useRouter();
+    async function clientAddAction(formData: FormData) {
+        const result = await addAction(formData);
+
+        if(result?.error) {
+            // Toast error notification
+            toast.error(result.error);
+        }
+
+        if(result?.success) {
+            // Toast success notification
+            toast.success(result.success);
+
+            router.push('/'); // Redirect to home page
+        }
     }
   return (
-    <form action={create} className='w-full max-w-xl mx-auto flex flex-col justify-center items-center space-y-4 mt-3 md:mt-5'>
+    <form action={clientAddAction} className='w-full max-w-xl mx-auto flex flex-col justify-center items-center space-y-4 mt-3 md:mt-5'>
         <div className='flex flex-col w-full'>
             <label>Product Image: </label>
             <input type="file" accept='image/*' name='image' 
