@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 
@@ -12,7 +13,7 @@ const Hero = () => {
             </Link>
         </div>
         <div>
-            
+            <Image src="/hero-img.png" alt='hero image of a watch' width={500} height={500} />
         </div>
     </div>
   )
