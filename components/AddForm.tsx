@@ -1,5 +1,7 @@
+"use client";
+
 import { addAction } from '@/utils/addAction'
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 import React from 'react'
 import toast from 'react-hot-toast';
 
