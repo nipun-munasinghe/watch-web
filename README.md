@@ -6,7 +6,7 @@ A modern, full-featured marketplace for buying and selling luxury watches. Built
 
 ## 📸 Demo
 
-![Screenshot of Watch Web homepage](/landing-page.png)
+![Screenshot of Watch Web homepage](./public/landing-page.png)
 
 ---
 
@@ -107,6 +107,12 @@ Visit `http://localhost:3000`
 
 Pull requests are welcome. For major changes, open an issue first to discuss what you would like to change or improve!
 
+## Contact
+
+- Developer: Nipun Munasinghe
+- LinkedIn: [Nipun Lakmal](https://www.linkedin.com/in/nipun-lakmal-b5b3652bb?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app)
+- Email: [nipunlakmal884@gmail.com](mailto:nipunlakmal884@gmail.com)
+- GitHub: [nipun-munasinghe](https://github.com/nipun-munasinghe)
 ---
 
 **Enjoy your new, professional watch marketplace!**  
