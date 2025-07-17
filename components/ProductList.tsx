@@ -1,11 +1,10 @@
 "use client";
-import Link from 'next/link';
-import React, { useEffect, useState } from 'react'
-import Image from 'next/image'
-import axios from 'axios';
+import Link from "next/link";
+import React, { useEffect, useState } from "react";
+import Image from "next/image";
+import axios from "axios";
 
-
-interface Product{  
+interface Product {
   _id: string;
   image: string;
   name: string;
@@ -13,27 +12,40 @@ interface Product{
 }
 
 const ProductList = () => {
-    const [products, setProducts] = useState([]);
+  const [products, setProducts] = useState<Product[]>([]);
 
-    useEffect(() => {
-      axios.get('/api/fetch-products').then((response) => setProducts(response.data.products))
-    }, [])
+  useEffect(() => {
+    axios.get("/api/fetch-products").then((response) => setProducts(response.data.products));
+  }, []);
+
   return (
-    <div id='product' className='px-4 md:px-12 py-5 md:py-10 flex justify-center items-center'>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 ">
-        {products.map((product: Product, index) => (
-          <Link href={`/product/${product._id}`} key={index}>
-            <Image src={product.image} alt="Product" width={1000} height={1000} 
-                    className='max-w-[17rem] h-72 object-cover object-center rounded-lg'/>
-              <div className='mt-4 '>
-                <h2 className='font-semibold text-lg'>{product.name}</h2>
-                <p className='font-medium text-sm mt-1'>Rs. {product.price}</p>
-              </div>
+    <section id="products" className="px-6 md:px-12 py-12 bg-gray-50">
+      <h2 className="w-full text-center text-2xl md:text-4xl font-extrabold mb-10 text-gray-800">All Products</h2>
+      <div className="max-w-7xl mx-auto grid gap-10 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+        {products.map((product) => (
+          <Link
+            key={product._id}
+            href={`/product/${product._id}`}
+            className="flex flex-col bg-white rounded-xl shadow-lg hover:shadow-2xl transition p-4 group"
+          >
+            <div className="overflow-hidden rounded-lg aspect-w-1 aspect-h-1 bg-gray-100">
+              <Image
+                src={product.image}
+                alt={product.name}
+                width={350}
+                height={250}
+                className="w-full h-60 object-cover object-center group-hover:scale-105 transition-transform duration-300"
+              />
+            </div>
+            <div className="mt-4 flex-1">
+              <h3 className="font-semibold text-lg text-gray-900">{product.name}</h3>
+              <p className="font-medium text-sm text-gray-700 mt-1">Rs. {product.price.toLocaleString()}</p>
+            </div>
           </Link>
         ))}
       </div>
-    </div>
-  )
-}
+    </section>
+  );
+};
 
-export default ProductList
+export default ProductList;

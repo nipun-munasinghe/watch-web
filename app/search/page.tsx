@@ -1,11 +1,11 @@
 "use client";
-import axios from 'axios';
-import Image from 'next/image';
-import Link from 'next/link';
-import { useSearchParams } from 'next/navigation'
-import React, { Suspense, useEffect, useState } from 'react'
+import axios from "axios";
+import Image from "next/image";
+import Link from "next/link";
+import { useSearchParams } from "next/navigation";
+import React, { Suspense, useEffect, useState } from "react";
 
-interface Product{  
+interface Product {
   _id: string;
   image: string;
   name: string;
@@ -13,42 +13,60 @@ interface Product{
 }
 
 const SearchComponent = () => {
-  const [products, setProducts] = useState([]);
-    const searchParams = useSearchParams();
+  const [products, setProducts] = useState<Product[]>([]);
+  const searchParams = useSearchParams();
 
-    useEffect(() => {
-        const searchTermFromUrl = searchParams.get('searchTerm');
-        if (searchTermFromUrl) {
-            axios
-            .get(`/api/search?searchTerm=${searchTermFromUrl}`)
-            .then((response) => setProducts(response.data.products))
-            .catch((error) => console.log("Error fetching search products:", error));
-            console.log(`Searching for: ${searchTermFromUrl}`);
-        } 
-    }, [searchParams]);
-    
+  useEffect(() => {
+    const searchTermFromUrl = searchParams.get("searchTerm");
+    if (searchTermFromUrl) {
+      axios
+        .get(`/api/search?searchTerm=${searchTermFromUrl}`)
+        .then((response) => setProducts(response.data.products))
+        .catch((error) => console.error("Error fetching search products:", error));
+    }
+  }, [searchParams]);
+
   return (
-    <div id='product' className='px-4 md:px-12 py-5 md:py-10 flex justify-center items-center'>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 ">
-        {products.map((product: Product, index) => (
-          <Link href={`/product/${product._id}`} key={index}>
-            <Image src={product.image} alt="Product" width={1000} height={1000} 
-                    className='max-w-[17rem] h-72 object-cover object-center rounded-lg'/>
-              <div className='mt-4 '>
-                <h2 className='font-semibold text-lg'>{product.name}</h2>
-                <p className='font-medium text-sm mt-1'>Rs. {product.price}</p>
-              </div>
-          </Link>
-        ))}
+    <section className="px-6 md:px-12 py-10 flex justify-center items-center min-h-[60vh] bg-gray-50">
+      <div className="max-w-7xl w-full">
+        {products.length === 0 ? (
+          <p className="text-center text-gray-600 text-lg">No products found.</p>
+        ) : (
+          <div className="grid gap-10 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+            {products.map((product) => (
+              <Link
+                href={`/product/${product._id}`}
+                key={product._id}
+                className="flex flex-col bg-white rounded-xl shadow-lg hover:shadow-2xl transition p-4 group"
+              >
+                <div className="overflow-hidden rounded-lg aspect-w-1 aspect-h-1 bg-gray-100">
+                  <Image
+                    src={product.image}
+                    alt={product.name}
+                    width={350}
+                    height={250}
+                    className="w-full h-60 object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
+                </div>
+                <div className="mt-4 flex-1">
+                  <h3 className="font-semibold text-lg text-gray-900">{product.name}</h3>
+                  <p className="font-medium text-sm text-gray-700 mt-1">
+                    Rs. {product.price.toLocaleString()}
+                  </p>
+                </div>
+              </Link>
+            ))}
+          </div>
+        )}
       </div>
-    </div>
-  )
-}
+    </section>
+  );
+};
 
-const SearchPage = () => {
-    return <Suspense fallback={<div>Loading...</div>}>
-              <SearchComponent />
-           </Suspense>
-}
+const SearchPage = () => (
+  <Suspense fallback={<div className="text-center py-40 text-gray-500">Loading...</div>}>
+    <SearchComponent />
+  </Suspense>
+);
 
-export default SearchPage
+export default SearchPage;

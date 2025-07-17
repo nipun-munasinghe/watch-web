@@ -1,3 +1,5 @@
+
+
 import type { Metadata } from "next";
 import { Lato } from "next/font/google";
 import "./globals.css";
@@ -7,8 +9,8 @@ import ToastProvider from "@/providers/ToastProvider";
 
 const lato = Lato({
   subsets: ["latin"],
-  weight: ["100", "300", "400", "700", "900"]
-})
+  weight: ["100", "300", "400", "700", "900"],
+});
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -17,15 +19,15 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
     <html lang="en">
-      <body className={`${lato.className} antialiased`} suppressHydrationWarning={true}>
+      <body className={`${lato.className} antialiased bg-gradient-to-b from-white to-gray-50 min-h-screen`} suppressHydrationWarning={true}>
         <ToastProvider />
         <Navbar />
-        {children}
+        <main className="min-h-[80vh]">{children}</main>
         <Footer />
       </body>
     </html>
