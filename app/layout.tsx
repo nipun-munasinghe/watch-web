@@ -22,9 +22,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${lato.className} antialiased`}
-      >
+      <body className={`${lato.className} antialiased`} suppressHydrationWarning={true}>
         <ToastProvider />
         <Navbar />
         {children}
