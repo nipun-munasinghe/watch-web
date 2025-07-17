@@ -1,7 +1,6 @@
 "use server";
 
 import { connectDB } from "@/app/api/db/connectDB";
-import { error } from "console";
 import cloudinary from "./cloudinary";
 import Product from "@/app/api/models/product.model";
 
@@ -23,8 +22,7 @@ export async function addAction(formData: FormData) {
 
         await connectDB();
 
-        //Image processes
-        // Image processes
+    //Image processes
     const arrayBuffer = await image.arrayBuffer();
     const buffer = new Uint8Array(arrayBuffer);
     const imageResponse: any = await new Promise((resolve, reject) => {

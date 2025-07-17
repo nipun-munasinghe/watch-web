@@ -1,8 +1,7 @@
 "use client";
 
-import { addAction } from '@/utils/addAction'
+import { updateAction } from '@/utils/updateAction';
 import axios from 'axios';
-import { set } from 'mongoose';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import React, { ChangeEvent, useEffect, useState } from 'react'
@@ -35,7 +34,7 @@ const UpdateForm = ({productId}: {productId: string}) => {
     }, [product]);
 
     async function clientAddAction(formData: FormData) {
-        const result = await addAction(formData);
+        const result = await updateAction(formData, productId);
 
         if(result?.error) {
             // Toast error notification
@@ -75,22 +74,22 @@ const UpdateForm = ({productId}: {productId: string}) => {
         </div>
         <div className='flex flex-col w-full'>
             <label>Name: </label>
-            <input type="text" placeholder='Enter the product name' name='name'
+            <input type="text" placeholder='Enter the product name' name='name' defaultValue={product?.name}
                 className='w-full py-1.5 md:py-2 text-[#252422] rounded-lg bg-white border border-gray-500' />
         </div>
         <div className='flex flex-col w-full'>
             <label>Price: </label>
-            <input type="number" placeholder='Enter the product price' name='price'
+            <input type="number" placeholder='Enter the product price' name='price' defaultValue={product?.price}
                 className='w-full py-1.5 md:py-2 text-[#252422] rounded-lg bg-white border border-gray-500' />
         </div>
         <div className='flex flex-col w-full'>
             <label>Seller's Link: </label>
-            <input type="text" placeholder='Link to where buyers can find you' name='link'
+            <input type="text" placeholder='Link to where buyers can find you' name='link' defaultValue={product?.link}
                 className='w-full py-1.5 md:py-2 text-[#252422] rounded-lg bg-white border border-gray-500' />
         </div>
         <div className='flex flex-col w-full'>
             <label>Description: </label>
-            <textarea placeholder='Enter the product description' name='description' rows={4}
+            <textarea placeholder='Enter the product description' name='description' rows={4} defaultValue={product?.description}
                 className='w-full py-1.5 md:py-2 text-[#252422] rounded-lg bg-white border border-gray-500'></textarea>
         </div>
 
