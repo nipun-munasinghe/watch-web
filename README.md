@@ -1,36 +1,113 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🕰️ Watch Web — Premium Watches Marketplace
 
-## Getting Started
+A modern, full-featured marketplace for buying and selling luxury watches. Built with **Next.js (App Router)**, **MongoDB**, and **Tailwind CSS**, the app focuses on a clean, professional UI, smooth user experience, and easy product management.
 
-First, run the development server:
+---
+
+## 📸 Demo
+
+![Screenshot of Watch Web homepage](/landing-page.png)
+
+---
+
+## 🚀 Features
+
+- **Beautiful Home & Product Pages**
+  - Head-turning hero section
+  - Responsive product grid
+  - Detailed product pages with contact action
+
+- **CRUD Operations**
+  - Add, update, and delete products with forms and image preview
+
+- **Search Bar**
+  - Instant search via the navbar, with a dedicated results page
+
+- **Professional UI**
+  - Consistent branding & color scheme
+  - Custom scrollbars for aesthetic polish
+
+- **Notifications**
+  - Success/error toasts via `react-hot-toast`
+
+- **Mobile Responsive**
+  - Fully adaptive layouts and components for all devices
+
+---
+
+## 🛠️ Tech Stack
+
+| Technology    | Purpose                  |
+|---------------|--------------------------|
+| Next.js 14+   | React Framework + SSR    |
+| Tailwind CSS  | Utility-first styling    |
+| MongoDB       | Database                 |
+| Mongoose      | Database ORM             |
+| Cloudinary API| Image upload & hosting   |
+| Axios         | API requests             |
+| React Hot Toast | User notifications     |
+| Lucide-React  | Beautiful SVG icons      |
+
+---
+
+## 📂 Folder Structure
+
+```bash
+/app
+/api # API routes
+/components # React components
+/providers # Context providers
+/utils # Helper functions
+/db # DB connection
+/models # Mongoose models
+/public # Static assets (incl. images)
+globals.css # Tailwind/global styles
+layout.tsx # Root layout
+```
+
+---
+
+## 📦 Setup & Install
+
+1. **Clone the repo**
+```bash
+git clone https://github.com/nipun-munasinghe/watch-web.git
+cd watch-web
+```
+
+2. **Install dependencies**
+
+```bash
+npm install
+```
+
+3. **Configure environment**
+
+- Copy `.env.example` to `.env.local` and fill in your MongoDB connection string.
+
+4. **Run the development server**
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Visit `http://localhost:3000`
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## ✨ Credits
 
-## Learn More
+- Font: [Lato by Google Fonts]
+- Images: Vecteezy
+- Icons: [Lucide React]
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 📤 Contribution
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Pull requests are welcome. For major changes, open an issue first to discuss what you would like to change or improve!
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+**Enjoy your new, professional watch marketplace!**  
+_Remember to star the repo if you found it helpful._  
