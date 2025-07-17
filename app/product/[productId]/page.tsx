@@ -2,6 +2,7 @@
 
 import ProductList from "@/components/ProductList";
 import axios from "axios";
+import { Ellipsis } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useParams, useRouter } from "next/navigation";
@@ -64,11 +65,11 @@ const ProductPage = () => {
                 onClick={() => setOpen(!open)}
                 className="cursor-pointer tracking-widest"
               >
-                ...
+                <Ellipsis />
               </span>
 
               {open && (
-                <div className="absolute bg-white shadow-md pb-2 px-5 text-base font-normal right-0 top-10">
+                <div className="absolute bg-white shadow-md pb-2 px-5 text-base font-normal right-0 top-10 py-1 rounded-md">
                   <Link href={`/product/${product._id}/update`}>
                     <p className="mb-2 pb-2 border-b border-gray-300">Update</p>
                   </Link>
@@ -83,7 +84,7 @@ const ProductPage = () => {
             </div>
           </div>
 
-          <h3 className="text-3xl font-semibold mt-3">${product.price}</h3>
+          <h3 className="text-3xl font-semibold mt-3">Rs. {product.price}</h3>
 
           <Link href={product.link} target="_blank">
             <button className="mt-8 bg-[#212529] hover:bg-[#343A40] text-white px-3 py-2 w-full font-semibold">
