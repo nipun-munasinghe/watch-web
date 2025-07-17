@@ -1,5 +1,3 @@
-
-
 import type { Metadata } from "next";
 import { Lato } from "next/font/google";
 import "./globals.css";
@@ -24,7 +22,8 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${lato.className} antialiased bg-gradient-to-b from-white to-gray-50 min-h-screen`} suppressHydrationWarning={true}>
+      <body className={`${lato.className} antialiased bg-gradient-to-b from-white to-gray-50 min-h-screen`} 
+        suppressHydrationWarning={true}>
         <ToastProvider />
         <Navbar />
         <main className="min-h-[80vh]">{children}</main>

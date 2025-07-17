@@ -20,7 +20,6 @@ const ProductList = () => {
 
   return (
     <section id="products" className="px-6 md:px-12 py-12 bg-gray-50">
-      <h2 className="w-full text-center text-2xl md:text-4xl font-extrabold mb-10 text-gray-800">All Products</h2>
       <div className="max-w-7xl mx-auto grid gap-10 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
         {products.map((product) => (
           <Link

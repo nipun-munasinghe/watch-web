@@ -53,7 +53,7 @@ const ProductPage = () => {
             alt={product.name}
             width={500}
             height={500}
-            className="rounded-xl shadow-lg object-cover object-center"
+            className="rounded-xl object-cover object-center"
           />
         </div>
         <div className="md:w-1/2 py-8 flex flex-col gap-4">

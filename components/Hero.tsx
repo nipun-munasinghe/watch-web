@@ -20,7 +20,7 @@ const Hero = () => (
       </Link>
     </div>
     <div className="mt-10 md:mt-0">
-      <Image src="/hero-img.png" alt="hero image of a watch" width={420} height={420} className="rounded-2xl" />
+      <Image src="/hero-img.png" alt="hero image of a watch" width={450} height={450} className="rounded-2xl" />
     </div>
   </section>
 );
